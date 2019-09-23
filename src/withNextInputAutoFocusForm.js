@@ -58,8 +58,9 @@ const withNextInputAutoFocusForm = (
       );
 
       if (nextFocusableInput) {
+        const value = this.props.formik.values[nextFocusableInput.props.name];
         const { description } = nextFocusableInput.props;
-        if (description && description === "(opcional)") return;
+        if ((description && description === "(opcional)") || value) return;
 
         this.inputRefs[nextFocusableInput.props.name].focus();
       } else {
